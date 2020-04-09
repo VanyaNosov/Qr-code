@@ -1,0 +1,16 @@
+#download {
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  height: 25px;
+  width: 100px;
+  margin-top: 30px;
+}
+
+#qrCode {
+  margin-top: 30px;
+  width: 150px;
+  height: 150px;
+  border: 10px solid Aqua;
+}

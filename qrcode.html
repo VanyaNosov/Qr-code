@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="qrcode.css">
+</head>
+
+<body>
+  <input type="text" id="qrValue" onchange="qrCodeGeneration()">
+  <div id='qrCode'></div>
+  <button id='download'>Download</button>
+</body>
+<script src="qrcode.min.js"></script>
+<script>
+  let qrValue = document.getElementById('qrValue')
+  let qrCode = new QRCode(document.getElementById('qrCode'))
+  const createA = document.getElementById('download');
+  function qrCodeGeneration(button) {
+    const data = qrValue.value;
+    qrCode.makeCode(data);
+    const src = document.querySelector('#qrCode img').src;
+    const img = document.querySelector('#qrCode img');
+    img.style.width = '150px';
+    const url = src.replace(/^data:image\/[^;]+/, 'data:application/octet-stream;headers=Content-Disposition%3A%20attachment%3B%20qrcodeconvite.png;');
+    if (button === 'button') window.open(url);
+  }
+  const canvas = document.querySelector('#qrCode canvas');
+  canvas.style.display = 'none';
+  createA.addEventListener('click', () => {
+    qrCodeGeneration('button');
+  })
+</script>
+
+</html>
